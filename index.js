@@ -1,24 +1,26 @@
 var a = [1, 4, 6, 8, 7, 5];
 
-Object.prototype.MyforEach = function (callback) {
+Object.prototype.myforEach = function (callback) {
     for (index = 0; index < this.length; index++) {
         callback(this[index], index, this);
     }
 };
 
 
-Object.prototype.MyMap = function (callback) {
-    var newArr;
+Object.prototype.myMap = function (callback) {
+    var newArr = [];
     for (index = 0; index < this.length; index++) {
-        newArr = callback(this[index], index, this);
+        newArr[index] = callback(this[index], index, this);
     }
     return newArr;
 }
 
-Object.prototype.MySort = function (array) {
+Object.prototype.mySort = function (callBack) {
     var elem = this[0],
         someEl;
-    for (var i = 0; i < this.length - 1; i++) {
+    if ( callBack = 1) {
+
+        for (var i = 0; i < this.length - 1; i++) {
         for (var j = 0; j < this.length - 1 - i; j++) {
             if (this[j + 1] < this[j]) {
                 var t = this[j + 1];
@@ -27,20 +29,29 @@ Object.prototype.MySort = function (array) {
             }
         }
     }
-    return array
+    return callBack
 };
 
-a.MyMap(function (el, index) {
-    console.log(el + index);
-})
-console.log('--------------------------')
 
-a.MyforEach(function (elem, ind, a) {
+a.myforEach(function (elem, ind, a) {
         console.log('arr[', ind, ']=', elem);
     }
 );
 
 console.log('--------------------------')
-console.log(a.MySort(a))
+console.log(a.mySort(a))
 
+console.log('--------------------------')
 
+console.log(a.mySort(function(a,b){
+    if(a > b) return -1
+if(a < b) return 1
+return 0
+}))
+var array = [1, 4, 6, 8, 7, 5]
+
+console.log('--------------------------')
+
+console.log(array.myMap(function(element, index, array) {
+    return element += 1
+}))
