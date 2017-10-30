@@ -1,4 +1,4 @@
-var a = [1,2,7,5,68,7,9,5,0];
+var a = [1,2,3,6,3,5,4,4,2];
 
 Object.prototype.myforEach = function (callback) {
     for (index = 0; index < this.length; index++) {
@@ -25,27 +25,27 @@ Object.prototype.mySort = function (callBack) {
 
     if (someEl > 0) {
 
-
-        for (j = 0; j < this.length - 1 - i; j++) {
-            if (this[j + 1] < this[j]) {
-                t = this[j + 1];
-                this[j + 1] = this[j];
-                this[j] = t;
-                return this;
+        for (var i = 0; i < this.length - 1; i++) {
+            for (j = 0; j < this.length - 1 - i; j++) {
+                if (this[j + 1] < this[j]) {
+                    t = this[j + 1];
+                    this[j + 1] = this[j];
+                    this[j] = t;
+                    return this;
+                }
             }
         }
-
     }
     if (someEl < 0) {
-
-        for (var j = 0; j < this.length - 1 - i; j++) {
-            if (this[j + 1] > this[j]) {
-                var t = this[j + 1];
-                this[j + 1] = this[j];
-                this[j] = t;
+        for (var i = 0; i < this.length - 1; i++) {
+            for (var j = 0; j < this.length - 1 - i; j++) {
+                if (this[j + 1] > this[j]) {
+                    var t = this[j + 1];
+                    this[j + 1] = this[j];
+                    this[j] = t;
+                }
             }
         }
-
     return this;
 }
     else {
