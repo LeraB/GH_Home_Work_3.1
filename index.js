@@ -1,4 +1,4 @@
-var a = [1, 4, 6, 8, 7, 5];
+var a = [2,3,4,25,1,2,5,3,3,33];
 
 Object.prototype.myforEach = function (callback) {
     for (index = 0; index < this.length; index++) {
@@ -13,23 +13,48 @@ Object.prototype.myMap = function (callback) {
         newArr[index] = callback(this[index], index, this);
     }
     return newArr;
-}
+};
 
 Object.prototype.mySort = function (callBack) {
     var elem = this[0],
-        someEl;
-    if ( callBack = 1) {
+        someEl = callBack || function (a, b) {
+            if (a > b) return -1;
+            if (a < b) return 1;
+            return 0;
+        };
 
-        for (var i = 0; i < this.length - 1; i++) {
-        for (var j = 0; j < this.length - 1 - i; j++) {
-            if (this[j + 1] < this[j]) {
-                var t = this[j + 1];
-                this[j + 1] = this[j];
-                this[j] = t;
+    if (this.someEl > 0) {
+        for (i = 0; i < ( this.length - 1 ); i++) {
+            for (j = 0; j < this.length - i - 1; j++) {
+                if (this[j] > this[j+1])
+                {
+                    temp = this[j];
+                    this[j] = this[j+1];
+                    this[j+1] = temp;
+                }
             }
         }
+        return this;
     }
-    return callBack
+    if (this.someEl < 0) {
+        for (i = 0; i < ( this.length - 1 ); i++) {
+            for (j = 0; j < this.length - i - 1; j++) {
+                if (this[j] > this[j+1])
+                {
+                    temp = this[j];
+                    this[j] = this[j+1];
+                    this[j+1] = temp;
+                }
+            }
+        }
+        return this;
+}
+    else {
+
+        return this;
+    }
+
+
 };
 
 
@@ -38,20 +63,25 @@ a.myforEach(function (elem, ind, a) {
     }
 );
 
-console.log('--------------------------')
-console.log(a.mySort(a))
 
-console.log('--------------------------')
 
-console.log(a.mySort(function(a,b){
-    if(a > b) return -1
-if(a < b) return 1
-return 0
-}))
-var array = [1, 4, 6, 8, 7, 5]
+console.log('--------------------------');
 
-console.log('--------------------------')
+console.log(a.mySort(function (a, b) {
+    if (a > b) return -1;
+    if (a < b) return 1;
+    return 0;
+}));
 
-console.log(array.myMap(function(element, index, array) {
+console.log('--------------------------');
+console.log(a.sort(function (a, b) {
+    if (a > b) return 1;
+    if (a < b) return -1;
+    return 0;
+}));
+
+console.log('--------------------------');
+
+console.log(a.myMap(function (element, index, array) {
     return element += 1
-}))
+}));
