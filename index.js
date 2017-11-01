@@ -1,4 +1,4 @@
-var a = [1,2,3,6,3,5,4,4,2];
+var a = [2,3,4,25,1,2,5,3,3,33];
 
 Object.prototype.myforEach = function (callback) {
     for (index = 0; index < this.length; index++) {
@@ -63,7 +63,7 @@ a.myforEach(function (elem, ind, a) {
 );
 
 console.log('--------------------------');
-console.log(a.sort(function (a, b) {
+console.log("Sort = ",a.sort(function (a, b) {
     if (a > b) return 1;
     if (a < b) return -1;
     return 0;
@@ -71,11 +71,7 @@ console.log(a.sort(function (a, b) {
 
 console.log('--------------------------');
 
-console.log(a.mySort(function (a, b) {
-    if (a > b) return 1;
-    if (a < b) return -1;
-    return 0;
-}));
+console.log("Mysort =",a.mySort());
 
 
 console.log('--------------------------');
