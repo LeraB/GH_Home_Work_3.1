@@ -23,37 +23,27 @@ Object.prototype.mySort = function (callBack) {
             return 0;
         };
 
-    if (someEl > 0) {
-
         for (var i = 0; i < this.length - 1; i++) {
-            for (j = 0; j < this.length - 1 - i; j++) {
-                if (this[j + 1] < this[j]) {
+            for (j = 0; j < this.length - 1; j++) {
+                if (someEl(this[j], this[j+1]) === -1) {
                     t = this[j + 1];
                     this[j + 1] = this[j];
                     this[j] = t;
-                    return this;
                 }
             }
         }
-    }
-    if (someEl < 0) {
-        for (var i = 0; i < this.length - 1; i++) {
+
+    for (var i = 0; i < this.length - 1; i++) {
             for (var j = 0; j < this.length - 1 - i; j++) {
-                if (this[j + 1] > this[j]) {
+                if (someEl(this[j], this[j+1]) === 1) {
                     var t = this[j + 1];
                     this[j + 1] = this[j];
                     this[j] = t;
                 }
             }
         }
-    return this;
-}
-    else {
 
         return this;
-    }
-
-
 };
 
 
@@ -63,15 +53,21 @@ a.myforEach(function (elem, ind, a) {
 );
 
 console.log('--------------------------');
-console.log("Sort = ",a.sort(function (a, b) {
-    if (a > b) return 1;
-    if (a < b) return -1;
+
+console.log("Mysort =",a.mySort(function (a, b) {
+    if (a > b) return -1;
+    if (a < b) return 1;
     return 0;
 }));
 
 console.log('--------------------------');
+console.log("Sort = ",a.sort(function (a, b) {
+    if (a > b) return -1;
+    if (a < b) return 1;
+    return 0;
+}));
 
-console.log("Mysort =",a.mySort());
+
 
 
 console.log('--------------------------');
