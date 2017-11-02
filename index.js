@@ -18,20 +18,12 @@ Object.prototype.myMap = function (callback) {
 Object.prototype.mySort = function (callBack) {
     var elem = this[0],
         someEl = callBack || function (a, b) {
-            if (a > b) return -1;
-            if (a < b) return 1;
+            if (a > b) return 1;
+            if (a < b) return -1;
             return 0;
         };
 
-        for (var i = 0; i < this.length - 1; i++) {
-            for (j = 0; j < this.length - 1; j++) {
-                if (someEl(this[j], this[j+1]) === -1) {
-                    t = this[j + 1];
-                    this[j + 1] = this[j];
-                    this[j] = t;
-                }
-            }
-        }
+
 
     for (var i = 0; i < this.length - 1; i++) {
             for (var j = 0; j < this.length - 1 - i; j++) {
